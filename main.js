@@ -1,6 +1,5 @@
 //El proyecto es hacer un quizz 
 
-
 //creamos la class para las preguntas
 class Preguntas{
     constructor (numeroPregunta, tipo, pregunta, opcion1, opcion2, opcion3, opcion4){
@@ -85,26 +84,33 @@ function marcador(){
     for(i=0; i < correctas.length;i++){
         if(correctas[i]==opcionElegida[i]){
             cantidadCorrectas++;
-            
-              
+            localStorage.setItem ("puntaje", cantidadCorrectas);
+            Swal.fire({
+                title: 'PUNTAJE',
+                text: `Usted ha contestado ${cantidadCorrectas} preguntas bien`,
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1500
+            })
         }
     }
-    alert(`Usted ha contestado ${cantidadCorrectas} preguntas bien.`)
-    return;
+    
+    
+    // alert(`Usted ha contestado ${cantidadCorrectas} preguntas bien.`)
+    
 }
 
 
 //setItem
-localStorage.setItem ("puntaje", cantidadCorrectas);
+
 
 //getItem
 let marcadorMostrado = localStorage.getItem ("puntaje")
 
 //Creamos tablero
 let divTablero = document.getElementById("tablaMarcador")
-let mostrarMarcador = document.createElement("div")
-    mostrarMarcador.innerHTML = `<p>Su puntaje es ${marcadorMostrado}</p>`
-    divTablero.appendChild(mostrarMarcador)
+    divTablero.innerHTML = `Su puntaje es 1`
+
 
 
 
